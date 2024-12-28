@@ -25,22 +25,20 @@ const MapSection = () => {
             {/* Information Section */}
             <div>
               <InfoCard
-                title="Our Address"
-                content={["123 Main St, San Francisco, CA 94105"]}
+                title="Địa chỉ của chúng tôi"
+                content={["206 Lạc Long Quân Ha Noi, Hanoi City"]}
               />
               <InfoCard
-                title="Hours"
+                title="Giờ làm việc"
                 content={[
-                  "Monday - Friday: 9am - 5pm",
-                  "Saturday: 10am - 4pm",
-                  "Sunday: Closed",
+                  "Thứ Hai - Chủ Nhật: 9.00 - 22.00"
                 ]}
               />
               <InfoCard
-                title="Contact"
+                title="Liên hệ với chúng tôi"
                 content={[
-                  "Email: info@example.com",
-                  "Phone: +1 23494 34993",
+                  "Email: ericnguyen.6110@gmail.com",
+                  "Phone: 034 352 1909",
                 ]}
               />
             </div>
@@ -55,9 +53,9 @@ const MapSection = () => {
 const InfoCard = ({ title, content }) => {
   return (
     <div className="border-t border-gray-200 px-6 py-4">
-      <h3 className="text-lg font-medium text-gray-900">{title}</h3>
+      <h3 className="text-lg font-medium text-white">{title}</h3>
       {content.map((item, index) => (
-        <p key={index} className="mt-1 text-gray-600">
+        <p key={index} className="mt-1 text-white">
           {item}
         </p>
       ))}
