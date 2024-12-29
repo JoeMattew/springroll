@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import dish1 from "../assets/dish1.jpg"; // Adjust the path as needed
+import dish2 from "../assets/dish2.jpg"; // Adjust the path as needed
 
 const BestChoice = () => {
   const [activeSlide, setActiveSlide] = useState(1);
-  const slides = [1, 2];
+  const slides = [
+    { id: 1, image: dish1 },
+    { id: 2, image: dish2 },
+  ];
 
   const handlePrev = () => {
     setActiveSlide(activeSlide === 1 ? slides.length : activeSlide - 1);
@@ -13,40 +18,46 @@ const BestChoice = () => {
   };
 
   return (
-    <div className="bg-black min-h-screen flex flex-col justify-center items-center py-12">
-      {/* Section Heading */}
-      <h2 className="text-3xl font-extrabold text-white mb-8">
-        Tốt nhất mọi thời đại!
-      </h2>
+    <div className="w-full mx-auto flex px-5 py-24 md:flex-row flex-col items-center bg-gray-950">
+      {/* Text Section */}
+      <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+<div className="text-container text-center">
+        <h1 className="title-font sm:text-5xl text-3xl mb-4 font-medium text-gray-100 text-center">
+          Tốt nhất mọi thời đại!
+        </h1>
+        <p className="mb-8 leading-relaxed text-gray-100 text-center sm:text-xl">
+          Chúng tôi tự hào mang đến những món ăn ngon nhất được yêu thích mọi thời đại.
+        </p>
+        </div>
+      </div>
 
-      <div className="max-w-5xl w-4/5 h-96 relative">
-        {/* Slides */}
-        {slides.map((slide) => (
-          <div
-            key={slide}
-            className={`font-bold text-7xl flex items-center justify-center h-full w-full bg-black text-white rounded-lg border border-white transition-opacity duration-300 ${
-              activeSlide === slide ? "opacity-100" : "opacity-0 absolute"
-            }`}
-          >
-            <span className="w-16 text-center">{slide}</span>
-            <span className="text-white">/</span>
-            <span className="w-16 text-center">{slides.length}</span>
-          </div>
-        ))}
+      {/* Image Section */}
+      <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 relative">
+        <div className="relative h-96 w-full rounded-lg border border-white overflow-hidden">
+          {/* Slides */}
+          {slides.map((slide) => (
+            <img
+              key={slide.id}
+              src={slide.image}
+              alt={`Dish ${slide.id}`}
+              className={`object-cover object-center h-full w-full rounded-lg transition-opacity duration-300 ${
+                activeSlide === slide.id ? "opacity-100" : "opacity-0 absolute"
+              }`}
+            />
+          ))}
 
-        {/* Prev/Next Arrows */}
-        <div className="absolute inset-0 flex">
-          <div className="flex items-center justify-start w-1/2">
+          {/* Navigation Buttons */}
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4">
             <button
-              className="bg-black text-white font-bold border border-white rounded-full w-16 h-16 flex items-center justify-center hover:bg-gray-800 transition-colors"
+              type="button"
+              className="bg-black text-white font-bold border border-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-gray-800 transition-colors"
               onClick={handlePrev}
             >
               &#8592;
             </button>
-          </div>
-          <div className="flex items-center justify-end w-1/2">
             <button
-              className="bg-black text-white font-bold border border-white rounded-full w-16 h-16 flex items-center justify-center hover:bg-gray-800 transition-colors"
+              type="button"
+              className="bg-black text-white font-bold border border-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-gray-800 transition-colors"
               onClick={handleNext}
             >
               &#8594;
@@ -54,15 +65,16 @@ const BestChoice = () => {
           </div>
         </div>
 
-        {/* Buttons */}
-        <div className="absolute w-full flex items-center justify-center px-4">
+        {/* Slide Indicators */}
+        <div className="flex justify-center mt-4">
           {slides.map((slide) => (
             <button
-              key={slide}
-              className={`w-6 h-6 mt-4 mx-2 rounded-full border border-white transition-colors duration-200 ease-out ${
-                activeSlide === slide ? "bg-white" : "bg-black"
+              key={slide.id}
+              type="button"
+              className={`w-4 h-4 mx-2 rounded-full border border-white transition-colors duration-200 ease-out ${
+                activeSlide === slide.id ? "bg-white" : "bg-gray-800"
               }`}
-              onClick={() => setActiveSlide(slide)}
+              onClick={() => setActiveSlide(slide.id)}
             ></button>
           ))}
         </div>
