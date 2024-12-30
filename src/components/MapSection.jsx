@@ -2,7 +2,7 @@ import React from 'react';
 
 const MapSection = () => {
   return (
-    <div className="w-full mx-auto flex flex-col md:flex-row px-5 py-24 items-center bg-gray-950">
+    <div id="map-section" className="w-full mx-auto flex flex-col md:flex-row px-5 py-24 items-center bg-gray-950">
       {/* Map Section */}
       <div className="lg:w-1/3 md:w-1/2 w-full">
         <iframe

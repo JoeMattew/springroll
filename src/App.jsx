@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import MapSection from './components/MapSection'
 import BestChoice from './components/BestChoice'
 import Footer from './components/Footer'
+import Order from './components/Order'
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Hero />
       <MapSection />
       <BestChoice />
+      <Order />
       <Footer />
     </div>
   )
